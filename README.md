@@ -1,5 +1,5 @@
 # GooglePhotosURLs  
-PHP function to create list of GooglePhotos from GooglePhotos public album url.  
+PHP function to create list of GooglePhotos from the GooglePhotos public album url.  
 ## Features
 * Original, preview or any size of images (by GooglePhoto engine)
 * `<img ...>` or url only output
