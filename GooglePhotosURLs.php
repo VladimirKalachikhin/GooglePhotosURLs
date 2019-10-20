@@ -1,9 +1,4 @@
 <?php
-
-$url = 'https://photos.app.goo.gl/ieZq8sHioiytnx6y6';
-$albumsPhotos=GooglePhotosURLs($url);
-echo "Album's Photos:<pre>"; print_r($albumsPhotos); echo "</pre>";
-
 function GooglePhotosURLs($albumURL,$width=NULL,$height=NULL,$urlsOnly=FALSE) {
 /* Get the GooglePhoto permanent album url, and
 return array of <img ...> strings of it photos, with permanent url's too.
@@ -23,8 +18,9 @@ if( $album = fopen($albumURL,'r')) {
 		if(($buffer=stristr($buffer,$needle)) === FALSE) continue; 	// если это не строка с требуемым url - проехали
 		$buffer = explode(',',$buffer);
 		if(count($buffer)!=10) continue; 	// требуемая строка - 10 значений, раздёлённых запятыми
+		$buffer[0]=trim($buffer[0]);
 		$buffer[0]=trim($buffer[0],'"');
-		/* итак, первый элемент - url, второй и третий - width height, десятый - размер в байтах */
+		/* итак, первый элемент - url, второй и третий - width height, десятый - ? */
 		if($width===NULL AND $height===NULL) {
 			$googletail='=w'.$buffer[1].'-h'.$buffer[2]; 	// исходный размер
 		}
