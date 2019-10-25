@@ -34,7 +34,7 @@ if( $album = fopen($albumURL,'r')) {
 			$googletail='=-h'.$height; 		// приведение к высоте
 		}
 		if($urlsOnly) $albumsPhotos[] = $buffer[0].$googletail;
-		else $albumsPhotos[] = '<img src="'.$buffer[0].$googletail.'>'."\n";
+		else $albumsPhotos[] = '<img src="'.$buffer[0].$googletail.'">'."\n";
 	}
 	if (!feof($album)) {
 		echo "Error: unexpected fgets() fail, may be not all images presents\n";
