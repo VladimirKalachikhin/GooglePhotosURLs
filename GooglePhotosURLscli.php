@@ -9,5 +9,5 @@ if($argv[1]) {
 		echo "\n\n";
 	}
 }
-else echo "Usage:\n  php GooglePhotosURLscli.php https://yougooglephotoalbumsharedlink\n\n";
+else echo "Usage:\n  php GooglePhotosURLscli.php https://YouGooglePhotoAlbumSharedLink\n\n";
 ?>

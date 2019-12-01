@@ -20,9 +20,9 @@ if( $album = fopen($albumURL,'r')) {
 		if(($buffer=stristr($buffer,$needle)) === FALSE) continue; 	// если это не строка с требуемым url - проехали
 		//echo "$buffer\n";
 		$buffer = explode(',',$buffer);
-		//print_r($buffer);
 		if((count($buffer)!=10) AND (count($buffer)!=3)) continue; 	// требуемая строка - 10 значений, раздёлённых запятыми
-		array_walk($buffer, function ($val){return trim($val," \t\n\r\0\x0B\"][");});
+		array_walk($buffer, function (&$val){$val=trim($val," \t\n\r\0\x0B\"][");});
+		//print_r($buffer);
 		/* итак, первый элемент - url, второй и третий - width height, десятый - ? */
 		if($width===NULL AND $height===NULL) {
 			$googletail='=w'.$buffer[1].'-h'.$buffer[2]; 	// исходный размер
