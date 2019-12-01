@@ -3,6 +3,7 @@ require_once("GooglePhotosURLs.php"); //
 require_once("GooglePhotoURL.php"); // 
 
 $albumUrl = 'https://photos.app.goo.gl/ieZq8sHioiytnx6y6'; 	// album permanent link, getted as "Share"->"Get link" 
+//$albumUrl = 'https://photos.app.goo.gl/sdBHphEhiMGgJ7h68'; 	// album permanent link, getted as "Share"->"Get link" 
 $photoUrl = 'https://photos.app.goo.gl/Gp2WP39VV9RwbNJf9'; 	// one photo permanent link, getted as "Share"->"Get link" 
 
 ?>

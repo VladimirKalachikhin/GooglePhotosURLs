@@ -13,13 +13,16 @@ $needle = 'https://lh3';
 $albumsPhotos = array();
 $googletail = '';
 
+//echo "$albumURL\n";
 if( $album = fopen($albumURL,'r')) {
 	while (($buffer = fgets($album, 4096)) !== FALSE) {
+		//echo "$buffer\n";
 		if(($buffer=stristr($buffer,$needle)) === FALSE) continue; 	// если это не строка с требуемым url - проехали
+		//echo "$buffer\n";
 		$buffer = explode(',',$buffer);
-		if(count($buffer)!=10) continue; 	// требуемая строка - 10 значений, раздёлённых запятыми
-		$buffer[0]=trim($buffer[0]);
-		$buffer[0]=trim($buffer[0],'"');
+		//print_r($buffer);
+		if((count($buffer)!=10) AND (count($buffer)!=3)) continue; 	// требуемая строка - 10 значений, раздёлённых запятыми
+		array_walk($buffer, function ($val){return trim($val," \t\n\r\0\x0B\"][");});
 		/* итак, первый элемент - url, второй и третий - width height, десятый - ? */
 		if($width===NULL AND $height===NULL) {
 			$googletail='=w'.$buffer[1].'-h'.$buffer[2]; 	// исходный размер
