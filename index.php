@@ -29,7 +29,7 @@ $albumsPhotos=GooglePhotosURLs($albumUrl);
 echo "Album's Photos:<pre>"; print_r($albumsPhotos); echo "</pre>";
 */
 /* More comlex */
-$albumPhotos=GooglePhotosURLs($albumUrl,NULL,NULL,TRUE);
+$albumPhotos=GooglePhotosURLs($albumUrl);
 foreach($albumPhotos as $photoURL) {
 	$photoURL=explode('=',$photoURL); 	// [0] - base url == GooglePhoto preview, [1] - original size
 	echo '<a href="'.$photoURL[0].'='.$photoURL[1].'" target="_blank"><img src="'.$photoURL[0].'"></a>';

@@ -1,11 +1,14 @@
 <?php
-function GooglePhotosURLs($albumURL,$width=NULL,$height=NULL,$urlsOnly=FALSE) {
-/* Get the GooglePhoto permanent album url, and
-return array of <img ...> strings of it photos, with permanent url's too.
-If no $width $height params - return full size images.
-If any of $width or $height params == 0 - return Google preview size images.
-If present $width or $height params - return scaled by Google to this size images.
-If present $width and $height params - return scaled by Google to min of this sizes images.
+function GooglePhotosURLs($albumURL,$width=NULL,$height=NULL,$urlsOnly=NULL) {
+/* v.1.0
+Get the GooglePhoto album shared url, and
+return array of the strings permanent urls of the albums photos.
+else if $urlsOnly=='csv' - return a array of the arrays with 2 elements:
+ first - the original image file name, second - the permanent url
+If no the $width $height params - return full size images.
+If any of the $width or $height params == 0 - return a Google preview size images.
+If present a $width or $height params - return the scaled by Google to the this size images.
+If present a $width and $height params - return the scaled by Google to min of the this sizes images.
 
 If not album - not return. If empty album - empty array return.
 */
@@ -36,8 +39,22 @@ if( $album = fopen($albumURL,'r')) {
 		elseif($height) {
 			$googletail='=-h'.$height; 		// приведение к высоте
 		}
-		if($urlsOnly) $albumsPhotos[] = $buffer[0].$googletail;
-		else $albumsPhotos[] = '<img src="'.$buffer[0].$googletail.'">'."\n";
+		switch($urlsOnly) {
+		case 'csv':
+			$img = file_get_contents($buffer[0]); 	// 
+			//print_r($http_response_header);
+			$filename='';
+			foreach($http_response_header as $header) {
+				if((strpos($header,'Content-Disposition')!==FALSE) AND (($pos=strpos($header,'filename='))!==FALSE)) {
+					$filename = trim(substr($header,$pos+9),'"');
+					break;
+				}
+			}
+			$albumsPhotos[] = array($filename,$buffer[0].$googletail);
+			break;
+		default:
+			$albumsPhotos[] = $buffer[0].$googletail;
+		}
 	}
 	if (!feof($album)) {
 		echo "Error: unexpected fgets() fail, may be not all images presents\n";
