@@ -1,6 +1,6 @@
 # GooglePhotosURLs  
-PHP function to create list of GooglePhotos from the GooglePhotos public album url.  
-And PHP function to create embedded code for one GooglePhoto.
+A PHP function and cli tool to takes the persistant url and create list of GooglePhotos from the GooglePhotos public album url.  
+And PHP function and cli tool to create embedded code for one GooglePhoto.
 
 ## Features
 * Original, preview or any size of images (by GooglePhoto engine)
@@ -14,7 +14,7 @@ See `index.php`
 One GooglePhoto:  
 `$ php GooglePhotoURLcli.php https://https://photos.app.goo.gl/yougooglephotosharedlinknumber`  
 GoogleAlbum:  
-`php GooglePhotosURLscli.php https://https://photos.app.goo.gl/yougooglephotoalbumsharedlinknumber` 
+`$ php GooglePhotosURLscli.php https://https://photos.app.goo.gl/yougooglephotoalbumsharedlinknumber` 
 
 ## Restrictions
 The image url must be on a separate string in source of album’s web page. Now it is.
