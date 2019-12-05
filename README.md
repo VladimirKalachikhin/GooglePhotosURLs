@@ -7,7 +7,7 @@ New API, not compatible with previous.
 * Original, preview or any size of images (by GooglePhoto engine)
 * Original filename
 * URL only or csv-style `"original_file_name","permanent_url"` output for album
-* `<a ...><img ...></a>` embedded code or url only output for one GooglePhoto
+* `<a ...><img ...></a>` embedding code or url only output for one GooglePhoto
 
 ## Example
 See `index.php`
