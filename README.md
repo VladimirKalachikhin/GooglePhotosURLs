@@ -1,8 +1,8 @@
 # GooglePhotosURLs  
 A PHP function and cli tool to takes the permanent url and create list of GooglePhotos from the GooglePhotos public album url.  
 And PHP function and cli tool to create embedding code with permanent url for one GooglePhoto.  
-## v.1.0
-New API, not compatible with previous.
+## v.2.0
+Following the changes in the hinducode structure
 ## Features
 * Original, preview or any size of images (by GooglePhoto engine)
 * Original filename

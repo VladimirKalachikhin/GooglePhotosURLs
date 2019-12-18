@@ -1,6 +1,8 @@
 <?php
 function GooglePhotosURLs($albumURL,$width=NULL,$height=NULL,$urlsOnly=NULL) {
-/* v.1.0
+/* v.2.0
+New: now needed array have 5 elements, not 10
+
 Get the GooglePhoto album shared url, and
 return array of the strings permanent urls of the albums photos.
 else if $urlsOnly=='csv' - return a array of the arrays with 2 elements:
@@ -21,9 +23,10 @@ if( $album = fopen($albumURL,'r')) {
 	while (($buffer = fgets($album, 4096)) !== FALSE) {
 		//echo "$buffer\n";
 		if(($buffer=stristr($buffer,$needle)) === FALSE) continue; 	// если это не строка с требуемым url - проехали
-		//echo "$buffer\n";
 		$buffer = explode(',',$buffer);
-		if((count($buffer)!=10) AND (count($buffer)!=3)) continue; 	// требуемая строка - 10 значений, раздёлённых запятыми
+		//print_r($buffer);
+		//if((count($buffer)!=10) AND (count($buffer)!=3)) continue; 	// требуемая строка - 10 значений, раздёлённых запятыми
+		if((count($buffer)!=5) AND (count($buffer)!=3)) continue; 	// требуемая строка - 5 значений, раздёлённых запятыми
 		array_walk($buffer, function (&$val){$val=trim($val," \t\n\r\0\x0B\"][");});
 		//print_r($buffer);
 		/* итак, первый элемент - url, второй и третий - width height, десятый - ? */

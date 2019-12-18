@@ -1,6 +1,8 @@
 <?php
 function GooglePhotoURL($photoURL,$width=NULL,$height=NULL,$urlOnly=NULL) {
-/* v.1.0
+/* v.2.0
+New: now needed array have 5 elements, not 10
+
 Get the GooglePhoto share url, and
 return the <a ...><img ...></a> string of it photo, with permanent url.
 
@@ -24,7 +26,8 @@ if( $photo = fopen($photoURL,'r')) {
 	while (($buffer = fgets($photo, 4096)) !== FALSE) {
 		if(($buffer=stristr($buffer,$needle)) === FALSE) continue; 	// если это не строка с требуемым url - проехали
 		$buffer = explode(',',$buffer);
-		if(count($buffer)!=10) continue; 	// требуемая строка - 10 значений, раздёлённых запятыми
+		//if(count($buffer)!=10) continue; 	// требуемая строка - 10 значений, раздёлённых запятыми
+		if(count($buffer)!=5) continue; 	// требуемая строка - 5 значений, раздёлённых запятыми
 		$buffer[0]=trim($buffer[0]);
 		$buffer[0]=trim($buffer[0],'"');
 		// итак, первый элемент - url, второй и третий - width height, десятый - ? 
