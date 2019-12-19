@@ -12,8 +12,6 @@ if(isset($options['help']) OR !isset($pos_args[0]) OR !filter_var($pos_args[0],F
 ?>
 Create a list of <a ...><img ...></a> string with permanent link from GooglePhoto album shared url
 Usage:
-GooglePhotosURLscli.php https://youGoogleGhotoGharedLink [[width] [height] [csv]]
-or
 GooglePhotosURLscli.php [[-w=width] [-h=height] [-m=csv]] https://youGoogleGhotoGharedLink
 or
 GooglePhotosURLscli.php [--help] - this help
@@ -29,17 +27,11 @@ else {
 	$url = filter_var($pos_args[0],FILTER_SANITIZE_URL);
 	$width = NULL;
 	if(isset($options['w'])) $width = intval( filter_var($options['w'],FILTER_SANITIZE_NUMBER_INT));
-	elseif(isset($pos_args[1])) $width = intval( filter_var($pos_args[1],FILTER_SANITIZE_NUMBER_INT));
 	$height = NULL;
 	if(isset($options['h'])) $height = intval( filter_var($options['h'],FILTER_SANITIZE_NUMBER_INT));
-	elseif(isset($pos_args[2])) $height = intval( filter_var($pos_args[2],FILTER_SANITIZE_NUMBER_INT));
 	$mode = NULL;
 	if(isset($options['m'])) {
 		$mode = substr(trim(filter_var($options['m'],FILTER_SANITIZE_STRING)),0,3);
-		if(!$mode) $mode=TRUE;
-	}
-	elseif(isset($pos_args[3])) {
-		$mode = substr(trim(filter_var($pos_args[3],FILTER_SANITIZE_STRING)),0,3);
 		if(!$mode) $mode=TRUE;
 	}
 	//echo "$url,$width,$height,$mode\n";
